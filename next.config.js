@@ -11,7 +11,7 @@ const withPWA = require('next-pwa')({
         cacheName: 'google-fonts',
         expiration: {
           maxEntries: 4,
-          maxAgeSeconds: 365 * 24 * 60 * 60 // 365 days
+          maxAgeSeconds: 365 * 24 * 60 * 60
         }
       }
     },
@@ -23,7 +23,7 @@ const withPWA = require('next-pwa')({
         networkTimeoutSeconds: 10,
         expiration: {
           maxEntries: 50,
-          maxAgeSeconds: 5 * 60 // 5 minutes
+          maxAgeSeconds: 5 * 60
         }
       }
     }
@@ -34,18 +34,15 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['localhost', 'supabase.co'],
+    domains: ['localhost', 'supabase.co', 'cdn.example.com'],
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60 * 60 * 24 * 365 // 1 year
+    minimumCacheTTL: 60 * 60 * 24 * 365
   },
   compress: true,
   poweredByHeader: false,
-  productionBrowserSourceMaps: false,
-  experimental: {
-    optimizePackageImports: ["zustand", "date-fns"]
-  }
+  productionBrowserSourceMaps: false
 };
 
 module.exports = withPWA(nextConfig);
